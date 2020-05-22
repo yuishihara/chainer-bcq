@@ -59,7 +59,7 @@ class VAEActor(_Actor):
     def __call__(self, x):
         (s, a) = x
         z, mu, ln_var = self._encode(s, a)
-        reconstructed, _ = self._decode(s, z)
+        reconstructed = self._decode(s, z)
         return reconstructed, mu, ln_var
 
     def _encode(self, s, a):
