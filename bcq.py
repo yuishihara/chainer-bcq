@@ -121,7 +121,7 @@ class BCQ(object):
             self._perturbator.to_device(device=self._device)
             self._vae.to_device(device=self._device)
 
-    def load_models(self, q_param_filepaths, perturbator_filepath, vae_filepath, lagrange_filepath):
+    def load_models(self, q_param_filepaths, perturbator_filepath, vae_filepath):
         for index, q_func in enumerate(self._q_ensembles):
             q_func.to_cpu()
             if q_param_filepaths:

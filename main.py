@@ -173,11 +173,10 @@ def load_params(bear, args):
     print('loading model params')
     q_params = [pathlib.Path(q_params)
                 for q_params in args.q_params] if args.q_params else None
-    pi_params = pathlib.Path(args.pi_params) if args.pi_params else None
+    perturbator_params = pathlib.Path(
+        args.perturbator_params) if args.perturbator_params else None
     vae_params = pathlib.Path(args.vae_params) if args.vae_params else None
-    lagrange_params = pathlib.Path(
-        args.lagrange_params) if args.lagrange_params else None
-    bear.load_models(q_params, pi_params, vae_params, lagrange_params)
+    bear.load_models(q_params, perturbator_params, vae_params)
 
 
 def main():
