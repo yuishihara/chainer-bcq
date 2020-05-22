@@ -86,7 +86,7 @@ class BCQ(object):
             state = chainer.Variable(s)
             if not self._device < 0:
                 state.to_gpu()
-            s_rep = F.repeat(x=s, repeats=100, axis=0)
+            s_rep = F.repeat(x=state, repeats=100, axis=0)
             a_rep = self._perturbator(s_rep, self._vae._decode(s_rep))
             max_index = F.argmax(self._q_ensembles[0](s_rep, a_rep), axis=0)
             a = a_rep[max_index]
