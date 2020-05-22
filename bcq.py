@@ -60,8 +60,6 @@ class BCQ(object):
 
         self._initialized = False
 
-        self._num_iterations = 0
-
     def train(self, iterator, **kwargs):
         if not self._initialized:
             self._initialize_all_networks()
@@ -72,8 +70,6 @@ class BCQ(object):
         q_update_status = self._q_update(batch)
         perturbator_update_status = self._perturbator_update(batch)
         self._update_all_target_networks(tau=self._tau)
-
-        self._num_iterations += 1
 
         status = {}
         status.update(vae_update_status)
