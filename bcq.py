@@ -211,8 +211,7 @@ class BCQ(object):
             s_next_rep = F.repeat(
                 x=s_next, repeats=self._num_action_samples, axis=0)
             a_next_rep = self._vae._decode(s_next_rep)
-            perturbed_action = self._target_perturbator._sample(
-                s_next_rep, a_next_rep)
+            perturbed_action = self._target_perturbator(s_next_rep, a_next_rep)
             q_values = F.stack([q_target(s_next_rep, perturbed_action)
                                 for q_target in self._target_q_ensembles])
             assert q_values.shape == (
